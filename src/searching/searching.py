@@ -1,14 +1,29 @@
-def linear_search(arr, target):
-    # Your code here
+from typing import Sequence, TypeVar
+
+T = TypeVar('T')
 
 
-    return -1   # not found
+def linear_search(arr: Sequence[T], target: T) -> int:
+    for i, item in enumerate(arr):
+        if item == target:
+            return i
+
+    return -1
 
 
-# Write an iterative implementation of Binary Search
-def binary_search(arr, target):
+def binary_search(arr: Sequence[T], target: T) -> int:
+    left = 0
+    right = len(arr) - 1
 
-    # Your code here
+    while left <= right:
+        middle = (left + right) // 2
 
+        if (middle_element := arr[middle]) == target:
+            return middle
 
-    return -1  # not found
+        if middle_element < target:
+            left = middle + 1
+        else:
+            right = middle - 1
+
+    return -1
